@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /*  Default Dark Theme */
+    body {
+      background-color: #0a095c; /* Deep blue default */
+      color: #ffffff;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /*  Light Theme */
+    body.light-theme {
+      background-color: #eef3f5;
+      color: #212529;
+    }
+
+    /* Each section — DARK THEME STYLES */
+    #hero {
+      background-color: #0a095c; 
+    }
+
+    #about {
+      background-color: #06437c; 
+    }
+
+    #portfolio {
+      background-color: #0a095c
+    }
+    #education {
+      background-color: #06437c; 
+    }
+
+    #experience {
+      background-color: #0a095c ; 
+    }
+
+    
+    #contact {
+      background-color: #06437c; 
+    }
+
+    /* LIGHT THEME STYLES */
+    body.light-theme #hero {
+      background-color: #0d68cf; /* pale sky blue */
+    }
+
+    body.light-theme #about {
+      background-color: #61aff3; /* soft pastel blue */
+    }
+
+    body.light-theme #portfolio {
+      background-color: #abd2ff; /* slightly darker */
+    }
+
+    body.light-theme #experience {
+      background-color: #abd2ff; /* clean light tone */
+    }
+
+    body.light-theme #education {
+      background-color: #61aff3;
+    }
+
+    body.light-theme #contact {
+      background-color: #61aff3;
+    }
+
+    /* Add smooth transitions */
+    section {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 0.8rem 5%;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #05838b !important;
+      font-size: 1.4rem;
+    }
+    .nav-link {
+      color: #05838b !important;
+      margin: 0 10px;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: orange !important;
+    }
+    .resume-btn {
+      font-weight: 500;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+
+    .resume-btn:hover {
+      background-color: #f8f9fa;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Theme toggle icons */
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: #05838b;
+      transition: color 0.3s;
+    }
+    .theme-toggle:hover {
+      color: orange;
+    }
+     
+    section {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* subtle for dark theme */
+    }
+
+    /* Lighter border for light mode */
+    body.light-theme section {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+    .hero-text h1,
+    .hero-text h2,
+    .hero-text p {
+      color: #05838b;
+    }
+    .highlight {
+      color: rgba(122, 81, 5, 0.959);
+    }
+    #typed {
+      color: rgb(11, 148, 240);
+      font-weight: bold;
+    }
+    .profile-pic {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 2px solid rgb(7, 227, 243);
+      box-shadow: 0 0 45px rgba(14, 247, 227, 0.5);
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .profile-pic:hover {
+      box-shadow: 0 0 35px rgba(255, 165, 0, 0.7);
+      transform: scale(1.05);
+    }
+
+    /* Social Buttons */
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .social-btn:hover {
+      transform: scale(1.2) rotate(30deg);
+    }
+    .social-btn.btn-dark:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+    .social-btn.btn-primary:hover { box-shadow: 0 0 15px rgba(10, 102, 194, 0.8); }
+    .social-btn.btn-success:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.8); }
+
+  
+
+    /* About Section Styling */
+    #about {
+      color: white;      
+      padding: 80px 0;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2de0e0; 
+      margin-bottom: 20px;
+    }
+
+    #about p.lead {
+      font-size: 1.2rem;
+      color: #f1f1f1;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    #about p {
+      font-size: 1rem;
+      color: #d0d0d0;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    #about span.text-primary {
+      color: #00aaff; /* Accent color */
+      font-weight: 600;
+    }
+
+    #about img {
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    #about img:hover {
+      transform: scale(1.05);
+    }
+
+    #about .btn {
+      border-radius:30px;
+      font-weight: 600;
+      padding:5px 10px;
+      transition: 0.6s ease-in-out;
+      box-shadow: 0 0 25px rgba(0, 170, 255, 0.9); /* much stronger glow */
+      margin-top: 20px;
+      margin-left: 40px;
+    }
+
+    #about .btn:hover {
+      background-color: #00aaff;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 45px rgba(0, 170, 255, 1); /* intense glow on hover */
+    }
+
+    /* Certificates Section */
+#certificates {
+  color: white !important;
+  padding: 40px 0;
+}
+
+/* Certificate Cards */
+.cert-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  width: 85%; /* Smaller box */
+  margin: auto;
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 180px; /* Smaller image size */
+  object-fit: cover;
+  border-bottom: 2px solid #007bff;
+}
+
+.cert-card .card-body h6 {
+  color: white !important;
+}
+
+/* Certificate Detail Section */
+#cert-detail {
+  color: white !important;
+  background-color: #0a095c;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(17, 17, 17, 0.3);
+}
+
+#cert-detail img {
+  max-width: 600px;
+  box-shadow: 0 0 30px rgba(0, 128, 255, 0.6);
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+}
+#cert-detail-img:hover {
+  transform: scale(1.02);
+}
+#cert-detail-desc {
+  color: white;
+}
+
+
+/* Back Button */
+#back-to-certs {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+#back-to-certs:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Animation for certificate details */
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation */
+#cert-detail.animate-show {
+  animation: fadeZoomIn 0.5s ease forwards;
+}
+
+.filter-btn.active {
+  background-color: #00bfff;
+  color: #000 !important;
+}
+
+.tech-item img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tech-item img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #00bfff);
+}
+
+.skill-item {
+    transition: all 0.4s ease-in-out;
+}
+
+.skill-item.hide {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white !important;
+    box-shadow: 0 0 12px #007bff;
+}
+/* Education Section */
+#education { 
+  padding: 60px 0;
+  transition: background-color 0.5s ease;
+}
+
+.education-card {
+  background-color: #111245;
+  border-left: 4px solid #007bff;
+  border-right: 4px solid #ff4c61;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.3), 0 0 20px rgba(255, 76, 97, 0.3);
+}
+
+.edu-image {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth fade for hide/show transitions */
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
+/*  Center the certificate view nicely */
+.cert-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.edu-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.7);
+}
+
+/* Layout for the education info */
+.edu-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.edu-content {
+  gap: 2rem;
+}
+
+.edu-image {
+  flex: 1 1 300px;
+}
+
+.edu-text {
+  flex: 2 1 500px;
+}
+
+.cert-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 76, 97, 0.7);
+}
+
+
+/* Experience Card */
+.experience-card {
+  background: linear-gradient(135deg, #1a1a6e, #0a095c);
+  border-left: 5px solid #007bff;
+  transition: transform 0.3s ease-in-out, background 0.4s ease;
+}
+
+body.light-theme .experience-card {
+  background: #ffffff;
+  border-left-color: #007bff;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Company Logo */
+.company-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  padding: 5px;
+}
+
+/* Badges and Text */
+.badge.current {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.company {
+  font-weight: 500;
+  color: #aab6ff;
+}
+
+body.light-theme .company {
+  color: #333;
+}
+
+.duration {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+body.light-theme .duration {
+  color: #555;
+}
+
+.role-desc {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+body.light-theme .role-desc {
+  color: #333;
+}
+
+
+/* Contact Image */
+.contact-image {
+  max-width: 350px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-image:hover {
+  transform: scale(1.05);
+}
+
+/* Contact Form */
+#contactForm {
+  background: linear-gradient(135deg, #1b1a7b, #0a095c);
+  border: none;
+}
+
+body.light-theme #contactForm {
+  background: #ffffff;
+  color: #212529;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styling */
+.modal-content {
+  border: none;
+  background: linear-gradient(135deg, #0a095c, #1d1b8c);
+  color: white;
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+body.light-theme .modal-content {
+  background: linear-gradient(135deg, #d6eaff, #b9d8f7);
+  color: #212529;
+}
+
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #0a095c; /* Dark mode background */
+  color: #f8f9fa;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme styling */
+body.light-theme .footer {
+  background-color: #b9d8f7;
+  color: #212529;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body fixed-top">
+    <div class="container-fluid">
+      <!-- Name on the margin -->
+      <a class="navbar-brand" href="#">MUOLA VERONICA</a>
+
+      <!-- Toggle button for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Items -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resume + Theme Toggle -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="assets/resume.pdf"target="_blank" download class="resume-btn d-flex align-items-center gap-2 px-3 py-1 rounded border" >
+          <i class="fa-solid fa-download"></i>
+          <span>Resume</span>
+        </a>
+
+        <i id="themeToggle" class="fa-solid fa-moon theme-toggle"></i>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 style="font-size: 3rem; font-weight: bold;">Welcome to my portfolio</h1>
+      <h2 style="font-size: 2.25rem;">Hi, I'm <span class="highlight">Veronica</span></h2>
+      <h2>a <span id="typed"></span></h2>
+
+      <!-- Social Links -->
+      <div class="d-flex gap-2 mt-3">
+        <a href=" https://github.com/Veracious27" target="_blank" class="btn btn-dark rounded-circle social-btn">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/muola-veronica-a3bab326a" target="_blank" class="btn btn-primary rounded-circle social-btn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://wa.me/254717770536?text=Hello%20Veronica,%20I%20saw%20your%20portfolio" 
+           target="_blank" class="btn btn-success rounded-circle social-btn">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Profile Picture -->
+    <div>
+      <img src="assets/profile.jpg" alt="Veronica's Photo" class="profile-pic img-fluid">
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var typed = new Typed("#typed", {
+      strings: [
+        "Cybersecurity Enthusiast",
+        "Passionate Software Developer",
+        "Red Teamer",
+        "Tech Speaker",
+        "Problem Solver"
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true,
+    });
+
+    // Theme Toggle by Icon
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", function () {
+      document.body.classList.toggle("light-theme");
+
+      // Swap icon
+      if (document.body.classList.contains("light-theme")) {
+        themeToggle.classList.remove("fa-moon");
+        themeToggle.classList.add("fa-sun");
+      } else {
+        themeToggle.classList.remove("fa-sun");
+        themeToggle.classList.add("fa-moon");
+      }
+    });
+  </script>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        
+        <!-- About Text -->
+        <div class="col-lg-7 mb-4">
+          <h2 class="fw-bold mb-3 text-primary">About Me</h2>
+          <p class="lead">
+          Hi, I'm Muola Veronica, I hold 
+          a degree in Computer Science and 
+          I’m passionate about building technology that solves real problems.<br>
+          A develop mainly in python and I also have solid skills in networking and cybersecurity.<br><br>
+
+          I enjoy working on projects that combine creativity and technical expertise , from software development to exploring the world of digital forensics and security.
+          My curiosity drives me to keep learning, experimenting, and improving.<br><br>
+           Outside of coding, I’m an active member of several tech communities, where I share knowledge,
+            learn from others, and take on leadership roles that allow me to inspire and collaborate with fellow enthusiasts<br><br>
+
+          Looking ahead, my goal is to grow as a developer and cybersecurity professional,
+           creating solutions that are secure, innovative, and meaningful to communities around me.
+
+          <!-- Button -->
+          <a href="#portfolio" class="btn btn-outline-primary mt-3">View My Work</a>
+        </div>
+
+        <!-- About Image -->
+        <div class="col-lg-5 text-center">
+          <img src="assets/kicc.jpg"alt="Veronica Muola" class="img-fluid rounded-3 shadow-lg" style="max-width: 350px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-5">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-4 text-primary">Portfolio</h2>
+
+      <!-- Tabs Navigation -->
+      <ul class="nav nav-tabs justify-content-center mb-4" id="portfolioTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">
+            Projects
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab">
+            Certificates
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills" type="button" role="tab">
+            Tech Stack 
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tabs Content -->
+      <div class="tab-content" id="portfolioTabsContent">
+
+        <!-- Projects Tab -->
+        <div class="tab-pane fade show active" id="projects" role="tabpanel">
+          <div class="row g-4">
+
+            <!-- Project Card -->
+            <div class="col-md-4">
+              <div class="card shadow-sm h-100">
+                <img src="assets\Rapha_vee.png" class="card-img-top" alt="Project 1">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Health Expert System</h5>
+                  <p class="card-text flex-grow-1">
+                    A Python-based expert system for symptom diagnosis, personalized advice, and BMI calculation.
+                  </p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <a href="https://your-live-demo.com" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+                    <a href="https://github.com/your-link" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+             <div class="col-md-4">
+              <div class="card shadow-sm h-100">
+                <img src="assets\Chatbot Interface.png" class="card-img-top" alt="Project 2">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Unisearch Chatbot</h5>
+                  <p class="card-text flex-grow-1">
+                    A flask and Rasa Chatbot for University selection.
+                  </p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <a href="https://your-live-demo.com" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+                    <a href="https://github.com/your-link" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm h-100">
+                <img src="assets/project1.png" class="card-img-top" alt="Project 3">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Management Information System</h5>
+                  <p class="card-text flex-grow-1">
+                    A Management Information System for Fleet management.
+                  </p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <a href="https://your-live-demo.com" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+                    <a href="https://github.com/your-link" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Certificates Tab -->
+        <div class="tab-pane fade" id="certificates" role="tabpanel">
+          <div id="cert-list" class="row g-4">
+
+            <!-- Certificate Card -->
+            <div class="col-md-4">
+              <div class="card shadow-sm cert-card" 
+                  data-title="Introduction to Cybersecurity"
+                  data-description="This certification provides foundational knowledge in cybersecurity,
+                      including the principles of network security, threat detection, and risk management.
+                      It introduces essential concepts such as securing network devices, identifying common attack vectors,
+                      and implementing defense strategies to protect systems and data.
+                      Through Cisco’s hands-on approach, I gained practical skills
+                      in managing security incidents and understanding how cybersecurity frameworks are applied in real-world environments."
+                  data-image="assets/Cybersecurity Cisco.png">
+                <img src="assets/Cybersecurity Cisco.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">Cyber Security for Beginners</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm cert-card" data-title="Data Science and Machine Learning Internship"
+                  data-description="This recognizes participation in an interactive session showcasing real-world applications of data 
+                     analysis and predictive modeling. It highlights exposure to essential tools and techniques used
+                     in data-driven problem-solving. This experience strengthened my understanding of how data science
+                     and machine learning are applied in practical, industry-based projects."
+                  data-image="assets/Edureka Machine Learning.png">
+                <img src="assets/Edureka Machine Learning.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">Data Science and Machine Learning </h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm cert-card" data-title="Networking Basics"
+                  data-description="The Networking Basics course covered essential concepts such as how computers communicate in a network,
+                   IP addressing, subnetting, and network configurations. It also introduced common networking devices, protocols,
+                   and troubleshooting techniques, providing a strong foundation for understanding modern network"
+                  data-image="assets/Networking Basics.png">
+                <img src="assets/Networking Basics.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">Networking Basics</h6>
+                </div>
+              </div>
+            </div>
+
+              <div class="col-md-4">
+              <div class="card shadow-sm cert-card" data-title="Dada STEM"
+                  data-description="The Dada STEM Certificate recognizes participation in a mentorship and training program dedicated
+                    to empowering young women in STEM. The program covered topics such as navigating tech careers,
+                    developing soft skills, and building confidence in leadership and innovation.
+                    It provided valuable mentorship and guidance to help shape my journey in technology and personal growth."
+                  data-image="assets\Dada STEM.png">
+                <img src="assets\Dada STEM.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">Dada STEM</h6>
+                </div>
+              </div>
+            </div>
+
+              <div class="col-md-4">
+              <div class="card shadow-sm cert-card" data-title="3D Printing"
+                  data-description="The 3D Printing Certificate covered the fundamentals of additive manufacturing, including 3D design,
+                    modeling, and printing processes. It introduced the use of CAD software, material selection, and printer operation. 
+                    The course provided hands-on experience in creating and fabricating digital models into physical objects."
+                  data-image="assets\3D Printing.png">
+                <img src="assets\3D Printing.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">3D Printing</h6>
+                </div>
+              </div>
+            </div>
+
+              <div class="col-md-4">
+              <div class="card shadow-sm cert-card" data-title="IBM Cybersecurity"
+                  data-description="The IBM Cybersecurity Certificate provided in-depth knowledge of cybersecurity principles, 
+                  including threat analysis, network protection, and incident response. It covered essential topics such as cryptography, 
+                  risk management, and security frameworks. The course strengthened my practical understanding of how to detect, prevent, 
+                  and respond to cyber threats using IBM’s industry-standard approaches."
+                  data-image="assets\IBM Cybersecurity.png">
+                <img src="assets\IBM Cybersecurity.png" class="card-img-top" alt="Certificate 1">
+                <div class="card-body text-center">
+                  <h6 class="fw-bold text-primary">IBM Cybersecurity</h6>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+          <!-- Certificate Detail (Hidden Initially) -->
+          <div id="cert-detail" class="d-none text-center">
+            <img id="cert-detail-img" src="" class="img-fluid mb-3 rounded shadow-lg" alt="Certificate Detail">
+            <h5 id="cert-detail-title" class="fw-bold text-primary"></h5>
+            <p id="cert-detail-desc"></p>
+            <button class="btn btn-outline-primary mt-3" id="back-to-certs">Back to Certificates</button>
+          </div>
+
+        <!-- Tech stack Tab -->
+        <div class="tab-pane fade" id="skills" role="tabpanel">
+          <div class="text-center mb-4">
+            <p class="text-light">Technologies and frameworks I work with</p>
+          </div>
+
+          <!-- Category Buttons -->
+          <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+            <button class="btn btn-outline-primary filter-btn active" data-category="all">All</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="frontend">Frontend</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="backend">Backend</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="databases">Databases</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="tools">Tools & Platforms</button>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="row g-4 justify-content-center" id="tech-list">
+
+            <!-- FRONTEND -->
+            <div class="col-6 col-md-3 tech-item" data-category="frontend">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/html.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'" class="img-fluid mb-2" alt="HTML" style="width:50px;">
+                  <h6>HTML</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 tech-item" data-category="frontend">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/css.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'" class="img-fluid mb-2" alt="CSS" style="width:50px;">
+                  <h6>CSS</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 tech-item" data-category="frontend">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/react.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'" class="img-fluid mb-2" alt="React" style="width:50px;">
+                  <h6>React</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- BACKEND -->
+            <div class="col-6 col-md-3 tech-item" data-category="backend">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/nodejs.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'" class="img-fluid mb-2" alt="Node.js" style="width:50px;">
+                  <h6>Node.js</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 tech-item" data-category="backend">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/python.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'" class="img-fluid mb-2" alt="Python" style="width:50px;">
+                  <h6>Python</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- DATABASES -->
+            <div class="col-6 col-md-3 tech-item" data-category="databases">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/mysql.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'" class="img-fluid mb-2" alt="MySQL" style="width:50px;">
+                  <h6>MySQL</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 tech-item" data-category="databases">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/mongodb.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'" class="img-fluid mb-2" alt="MongoDB" style="width:50px;">
+                  <h6>MongoDB</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- TOOLS -->
+            <div class="col-6 col-md-3 tech-item" data-category="tools">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/git.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'" class="img-fluid mb-2" alt="Git" style="width:50px;">
+                  <h6>Git</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 tech-item" data-category="tools">
+              <div class="card bg-dark text-white text-center shadow-sm border-0">
+                <div class="card-body">
+                  <img src="assets/github.png" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'" class="img-fluid mb-2" alt="GitHub" style="width:50px;">
+                  <h6>GitHub</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JS Filter Logic -->
+        <script>
+          document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+              const category = button.dataset.category;
+
+              // Update active button
+              document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+
+              // Show/hide tech items
+              document.querySelectorAll('.tech-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                  item.style.display = 'block';
+                } else {
+                  item.style.display = 'none';
+                }
+              });
+            });
+          });
+        </script>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS for Certificate Detail -->
+  <script>
+    // Function to show certificate detail
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const desc = card.getAttribute('data-description');
+        const img = card.getAttribute('data-image'); // Use data-image to display correct certificate image
+
+        const certList = document.getElementById('cert-list');
+        const detail = document.getElementById('cert-detail');
+
+        // Hide certificate list and show detail section
+        certList.classList.add('d-none');
+        detail.classList.remove('d-none');
+
+        // Update certificate detail content
+        document.getElementById('cert-detail-title').textContent = title;
+        document.getElementById('cert-detail-desc').textContent = desc;
+        document.getElementById('cert-detail-img').src = img;
+        document.getElementById('cert-detail-img').alt = title;
+
+        // Show background dim overlay
+        overlay.classList.add('active');
+      });
+    });
+
+    // Function to return back to certificate list
+    document.getElementById('back-to-certs').addEventListener('click', () => {
+      document.getElementById('cert-detail').classList.add('d-none');
+      document.getElementById('cert-list').classList.remove('d-none');
+      overlay.classList.remove('active');
+    });
+
+  </script>
+  
+  <!-- Education-->
+  <section id="education" class="text-center">
+    <!-- Education Info -->
+    <div id="edu-info" class="fade show edu-container">
+      <h2 class="mb-4 fw-bold">Education</h2>
+      <p class="text-muted">My academic Journey</p>
+
+      <div class="edu-content d-flex align-items-center justify-content-center flex-wrap gap-4">
+        <img src="assets/university_gate.jpeg" alt="University Gate" class="img-fluid rounded-4 shadow-lg edu-image" style="max-width: 250px;">
+
+        <div class="edu-text text-start" style="max-width: 600px;">
+          <h3 class="fw-bold text-white">University of Embu</h3>
+          <p class="white"><strong>Bachelor of Science in Computer Science</strong></p>
+          <p class="black">
+            Studied Computer Science, a discipline that focuses on the theoretical and practical 
+            aspects of computing. The program covers programming, algorithms, data structures, networks, 
+            databases, and cybersecurity preparing learners to solve complex problems through innovative 
+            technology solutions.
+            Computer Science involves the study of computers and computational systems,
+            focusing on designing software, understanding hardware,
+            and solving complex real-world problems using technology.
+          </p>
+
+          <ul class="black">
+            <li>Gained hands-on skills in Python, Java, and C++</li>
+            <li>Explored software development, networking, and cybersecurity</li>
+            <li>Developed problem-solving and critical thinking abilities</li>
+          </ul>
+
+          <p class="fw-bold text-danger">Graduated on September 12<sup>th</sup>, 2025</p>
+          <a href="#" id="view-cert" class="text-cyan fw-semibold text-decoration-underline">Click here to view my certificate</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate View -->
+    <div id="certificate-view" class="fade d-none cert-container">
+      <div class="d-flex flex-column align-items-center justify-content-center min-vh-50">
+        <img src="assets/certificate_thumb.png" alt="Graduation Certificate Full" class="img-fluid rounded-4 shadow-lg mb-3" style="max-width: 80%; height: auto;">
+        <button class="btn btn-outline-primary mt-3" id="back-to-edu">Back to Education</button>
+      </div>
+    </div>
+  </section>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const eduInfo = document.getElementById("edu-info");
+        const certView = document.getElementById("certificate-view");
+        const viewCert = document.getElementById("view-cert");
+        const backBtn = document.getElementById("back-to-edu");
+
+        viewCert.addEventListener("click", function() {
+          event.preventDefault();
+          event.stopPropagation(); // prevents any scroll or default link jump
+          eduInfo.classList.remove("show");
+          setTimeout(() => {
+            eduInfo.classList.add("d-none");
+            certView.classList.remove("d-none");
+            setTimeout(() => certView.classList.add("show"), 10);
+          }, 400);
+        });
+
+        backBtn.addEventListener("click", function() {
+          certView.classList.remove("show");
+          setTimeout(() => {
+            certView.classList.add("d-none");
+            eduInfo.classList.remove("d-none");
+            setTimeout(() => eduInfo.classList.add("show"), 10);
+          }, 400);
+        });
+      });
+      </script>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="py-5 experience-section">
+    <div class="container">
+      <h1 class="fw-bold text-primary text-center mb-5">Experience</h1>
+
+      <!-- Experience Item 1 -->
+      <div class="experience-card shadow-sm p-4 rounded-4 mb-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/sofsrea.jpeg" alt="Valor PayTech" class="company-logo me-3">
+          <div>
+            <h3 class="fw-bold text-black">
+              Cybersecurity Attache' <span class="badge current">Current</span>
+            </h3>
+            <p class="company mb-1">Society of Forensic Science Researchers and Expert Association ·Internship</p>
+            <p class="duration mb-0">May 2024 – August 2024 | Nairobi, Kenya – Onsite</p>
+          </div>
+        </div>
+        <p class="role-desc">
+          Conducted system vulnerability assessments, monitored network performance, and assisted in implementing security measures to enhance system reliability and data protection.
+          Collaborated with the IT team to document findings and strengthen cybersecurity practices.
+
+        </p>
+      </div>
+
+      <!-- Experience Item 2 -->
+      <div class="experience-card shadow-sm p-4 rounded-4 mb-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/SCA-Chuka.png" alt="SCA" class="company-logo me-3">
+          <div>
+            <h3 class="fw-bold text-black">Univerisity of Embu Representative</h3>
+            <p class="company mb-1">SCA Chuka Chapter · Volunteering</p>
+            <p class="duration mb-0">March 2023 –March 2025 | Tharaka-Nithi, Kenya – Hybrid</p>
+          </div>
+        </div>
+        <p class="role-desc">
+          Organized and led tech outreach programs promoting digital literacy and inclusion among students. 
+          Advocated for women in tech by mentoring peers and encouraging careers in software development and cybersecurity.
+
+        </p>
+      </div>
+
+      <!-- Experience Item 3 -->
+      <div class="experience-card shadow-sm p-4 rounded-4 mb-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/GDG.jpeg" alt="Forensic Science Research Organization" class="company-logo me-3">
+          <div>
+            <h3 class="fw-bold text-black">Cybersecurity Lead</h3>
+            <p class="company mb-1">Google Developer Groups on Campus UoEm · Leadership</p>
+            <p class="duration mb-0">January 2023 – March 2025 | Embu, Kenya – Onsite</p>
+          </div>
+        </div>
+        <p class="role-desc">
+          Led cybersecurity awareness and technical training sessions for students, promoting safe computing and secure coding practices. 
+          Supported ICT projects, event setups, and peer mentorship within the Google Developer Groups community.
+
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+    
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-5 contact-section">
+    <div class="container">
+      <div class="row align-items-center justify-content-center g-5">
+
+        <!-- Left Side - Image -->
+        <div class="col-md-5 text-center">
+          <img src="assets/lets-talk.jpg" alt="Let's Talk" class="img-fluid rounded-4 shadow-lg contact-image">
+        </div>
+
+        <!-- Right Side - Contact Form -->
+        <div class="col-md-6">
+          <h2 class="fw-bold text-primary mb-4 text-center">Let's Connect</h2>
+          <p class="text-center mb-4">Got a question, collaboration idea, or just want to say hi? Drop a message below.</p>
+
+          <form id="contactForm" action="https://formspree.io/f/mvgwwajn" method="POST" class="p-4 rounded-4 shadow-lg bg-dark text-white">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Name</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Email</label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Your email" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label fw-semibold">Message</label>
+              <textarea name="message" id="message" rows="4" class="form-control" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Send Message</button>
+            <p id="formStatus" class="mt-3 text-center"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white text-center rounded-4 shadow-lg p-4">
+        <div class="modal-body">
+          <img src="assets/success.png" alt="Success" class="img-fluid mb-3" style="width: 80px;">
+          <h5 class="fw-bold mb-2">Message Sent!</h5>
+          <p>Thank you for reaching out. I’ll get back to you shortly.</p>
+          <button type="button" class="btn btn-primary mt-3 px-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      status.innerHTML = "⏳ Sending...";
+      status.style.color = "#007bff";
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          status.innerHTML = "";
+          form.reset();
+
+          // Show success modal
+          const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+          successModal.show();
+        } else {
+          status.innerHTML = "❌ Oops! Something went wrong.";
+          status.style.color = "red";
+        }
+      } catch (error) {
+        status.innerHTML = "⚠️ Network error. Please try again.";
+        status.style.color = "orange";
+      }
+    });
+  </script>
+
+  <footer class="footer text-center">
+    <p>© 2025 Muola Veronica. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
